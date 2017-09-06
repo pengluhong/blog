@@ -25,20 +25,35 @@
 							<li>
 								<span class="hover">html+css <i class="glyphicon glyphicon-chevron-down"></i></span>
 								<div>
-									<a href="views/html+css/css.html">css问题</a>
+									<a href="javascript:;">css问题</a>
 								</div>
 							</li>
 							<li>
 								<span class="hover">jquery <i class="glyphicon glyphicon-chevron-down"></i></span>
 								<div>
-									<a href="views/jquery/jquery.html">jquery轮播图示例</a>
+									<a href="views/jquery.html" class="current">jquery轮播图示例</a>
 								</div>
 							</li>
 						</ul>
 					</div>
+					<div class="pull-right content">
+						没有东西
+					</div>
+					<!--content-->
 				</div>
 			</div>
 		</div>
 	</body>
 
 </html>
+<script>$(function() {
+	$('.nav li span').click(function() {
+		if($(this).find('>i.glyphicon').is('.glyphicon-chevron-down')) {
+			$(this).find('>i.glyphicon').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-right');
+			$(this).siblings('div').slideUp();
+		} else {
+			$(this).find('>i.glyphicon').removeClass('glyphicon-chevron-right').addClass('glyphicon-chevron-down');
+			$(this).siblings('div').slideDown();
+		}
+	});
+});</script>
