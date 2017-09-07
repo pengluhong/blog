@@ -35,17 +35,17 @@ body {
 	padding-left: 30px;
 }
 
-.nav ul {
+.nav-list {
 	background: #fefefe;
 }
 
-.nav li {
+.nav-list li {
 	width: 150px;
 	color: #fff;
 }
 
-.nav li span,
-.nav li a {
+.nav-list li span,
+.nav-list li a {
 	display: block;
 	width: 150px;
 	height: 33px;
@@ -57,13 +57,13 @@ body {
 	user-select: none;
 }
 
-.nav li span {
+.nav-list li span {
 	background: #000;
 	cursor: pointer;
 	border-top: 1px solid #fff;
 }
 
-.nav li a {
+.nav-list li a {
 	background: #F5F5F5;
 	border: 1px solid #3c3c3c;
 	border-top: none;
