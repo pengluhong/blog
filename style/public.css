@@ -72,7 +72,7 @@ body {
 	white-space: nowrap;
 }
 
-.nav li a.current {
+.nav-list li a.current {
 	color: #fff;
 	background: #5cb85c;
 }

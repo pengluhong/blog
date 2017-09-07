@@ -21,7 +21,7 @@
 			<div class="container padding-top">
 				<div class="row clearfix">
 					<div class="pull-left nav">
-						<ul>
+						<ul class="nav-list">
 							<li>
 								<span class="hover">html+css <i class="glyphicon glyphicon-chevron-down"></i></span>
 								<div>
@@ -46,14 +46,16 @@
 	</body>
 
 </html>
-<script>$(function() {
-	$('.nav li span').click(function() {
-		if($(this).find('>i.glyphicon').is('.glyphicon-chevron-down')) {
-			$(this).find('>i.glyphicon').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-right');
-			$(this).siblings('div').slideUp();
-		} else {
-			$(this).find('>i.glyphicon').removeClass('glyphicon-chevron-right').addClass('glyphicon-chevron-down');
-			$(this).siblings('div').slideDown();
-		}
+<script>
+	$(function() {
+		$('.nav li span').click(function() {
+			if($(this).find('>i.glyphicon').is('.glyphicon-chevron-down')) {
+				$(this).find('>i.glyphicon').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-right');
+				$(this).siblings('div').slideUp();
+			} else {
+				$(this).find('>i.glyphicon').removeClass('glyphicon-chevron-right').addClass('glyphicon-chevron-down');
+				$(this).siblings('div').slideDown();
+			}
+		});
 	});
-});</script>
+</script>
