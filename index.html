@@ -4,66 +4,33 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<base href="/" />
 		<title>luhom Peng</title>
 		<!--[if lt IE 9]>您使用的浏览器版本太低，请使用 IE9以上的版本浏览器打开本网站 <![endif]-->
 		<link rel="shortcut icon" href="favicon.ico">
 		<link rel="bookmark" href="favicon.ico" type="image/x-icon" 　/>
-		<link rel="stylesheet" href="style/reset.css">
-		<link rel="stylesheet" href="style/bootstrap.min.css">
-		<link rel="stylesheet" href="style/public.css">
-		<link rel="stylesheet" href="style/style.css">
-		<script src="js/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<!--<script src="js/angularJs1.6.3.js"></script>
-		<script src="node_modules/angular-route/angular-route.min.js"></script>-->
-		<script src="https://cdn.bootcss.com/angular.js/1.4.6/angular.min.js"></script>
-		<script src="https://apps.bdimg.com/libs/angular-route/1.3.13/angular-route.js"></script>
-		<script src="js/ng.js"></script>
+		<link rel="stylesheet" href="A-Study/app/blog/style/reset.css">
+		<link rel="stylesheet" href="A-Study/app/blog/style/bootstrap.min.css">
+		<link rel="stylesheet" href="A-Study/app/blog/style/public.css">
+		<link rel="stylesheet" href="A-Study/app/blog/style/style.css">
+		<script src="A-Study/app/blog/js/jquery.min.js"></script>
+		<script src="A-Study/app/blog/js/bootstrap.min.js"></script>
+		<script src="A-Study/app/blog/js/angularJs1.6.3.js"></script>
+		<!--<script src="node_modules/angular-route/angular-route.min.js"></script>
+		<!--<script src="https://cdn.bootcss.com/angular.js/1.4.6/angular.min.js"></script>
+		<script src="https://apps.bdimg.com/libs/angular-route/1.3.13/angular-route.js"></script>-->
+		<script src="A-Study/app/blog/js/angular-ui-router.min.js"></script>
+		<script src="A-Study/app/blog/js/ng.js"></script>
 	</head>
 
-	<body ng-app="myApp" ng-cloak>
+	<body ng-app="myApp" ng-controller="myController" ng-init="Cut()" ng-cloak>
 		<div class="container-fluid bg">
 			<div class="container padding-top">
-				<div class="row clearfix">
-					<div class="pull-left nav">
-						<ul class="nav-list">
-							<li>
-								<span class="hover">html+css <i class="glyphicon glyphicon-chevron-down"></i></span>
-								<div>
-									<a href="#/css">css问题</a>
-								</div>
-							</li>
-							<li>
-								<span class="hover">jquery <i class="glyphicon glyphicon-chevron-down"></i></span>
-								<div>
-									<a href="#/jquery">jquery轮播图示例</a>
-								</div>
-							</li>
-							<li>
-								<span class="hover">angularjs <i class="glyphicon glyphicon-chevron-down"></i></span>
-								<div>
-									<a href="#/ng01">angular路由问题</a>
-								</div>
-							</li>
-						</ul>
-					</div>
-					<div class="pull-right content" ng-view=""></div>
+				<div class="row clearfix" ui-view>
+
 				</div>
 			</div>
 		</div>
 	</body>
 
 </html>
-<script>
-	$(function() {
-		$('.nav li span').click(function() {
-			if($(this).find('>i.glyphicon').is('.glyphicon-chevron-down')) {
-				$(this).find('>i.glyphicon').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-right');
-				$(this).siblings('div').slideUp();
-			} else {
-				$(this).find('>i.glyphicon').removeClass('glyphicon-chevron-right').addClass('glyphicon-chevron-down');
-				$(this).siblings('div').slideDown();
-			}
-		});
-	});
-</script>

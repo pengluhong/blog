@@ -1,5 +1,6 @@
 body {
 	background: #000;
+	min-width: 1400px;
 }
 
 .bg {
@@ -35,8 +36,34 @@ body {
 	padding-left: 30px;
 }
 
+.head-info {
+	padding-bottom: 10px;
+	border: 1px solid #000;
+}
+
+.head-info p {
+	font-size: 12px;
+	color: #000;
+	background: #C0C0C0;
+	line-height: 22px;
+	line-height: 22px;
+	text-indent: 12px;
+}
+
+.head-img {
+	width: 100px;
+	margin: 10px auto 0 auto;
+}
+
+.head-info span {
+	display: block;
+	margin-top: 10px;
+	text-align: center;
+}
+
 .nav-list {
 	background: #fefefe;
+	margin-top: 20px;
 }
 
 .nav-list li {
