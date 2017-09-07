@@ -14,9 +14,12 @@
 		<link rel="stylesheet" href="style/style.css">
 		<script src="js/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
+		<script src="js/angularJs1.6.3.js"></script>
+		<script src="node_modules/angular-route/angular-route.min.js"></script>
+		<script src="js/ng.js"></script>
 	</head>
 
-	<body>
+	<body ng-app="myApp" ng-cloak>
 		<div class="container-fluid bg">
 			<div class="container padding-top">
 				<div class="row clearfix">
@@ -25,20 +28,40 @@
 							<li>
 								<span class="hover">html+css <i class="glyphicon glyphicon-chevron-down"></i></span>
 								<div>
-									<a href="views/html+css/css.html">css问题</a>
+									<a href="#/css">css问题</a>
 								</div>
 							</li>
 							<li>
 								<span class="hover">jquery <i class="glyphicon glyphicon-chevron-down"></i></span>
 								<div>
-									<a href="views/jquery/jquery.html">jquery轮播图示例</a>
+									<a href="#/jquery">jquery轮播图示例</a>
+								</div>
+							</li>
+							<li>
+								<span class="hover">angularjs <i class="glyphicon glyphicon-chevron-down"></i></span>
+								<div>
+									<a href="#/ng01">angular路由问题</a>
 								</div>
 							</li>
 						</ul>
 					</div>
+					<div class="pull-right content" ng-view=""></div>
 				</div>
 			</div>
 		</div>
 	</body>
 
 </html>
+<script>
+	$(function() {
+		$('.nav li span').click(function() {
+			if($(this).find('>i.glyphicon').is('.glyphicon-chevron-down')) {
+				$(this).find('>i.glyphicon').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-right');
+				$(this).siblings('div').slideUp();
+			} else {
+				$(this).find('>i.glyphicon').removeClass('glyphicon-chevron-right').addClass('glyphicon-chevron-down');
+				$(this).siblings('div').slideDown();
+			}
+		});
+	});
+</script>

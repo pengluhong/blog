@@ -1,49 +1,10 @@
-<!doctype html>
-<html lang="en">
-
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>luhom Peng</title>
-		<!--[if lt IE 9]>您使用的浏览器版本太低，请使用 IE9以上的版本浏览器打开本网站 <![endif]-->
-		<link rel="shortcut icon" href="../../favicon.ico">
-		<link rel="bookmark" href="../../favicon.ico" type="image/x-icon" 　/>
-		<link rel="stylesheet" href="../../style/reset.css">
-		<link rel="stylesheet" href="../../style/bootstrap.min.css">
-		<link rel="stylesheet" href="../../style/public.css">
-		<link rel="stylesheet" href="../../style/style.css">
-		<script src="../../js/jquery.min.js"></script>
-		<script src="../../js/bootstrap.min.js"></script>
-	</head>
-
-	<body>
-		<div class="container-fluid bg">
-			<div class="container padding-top">
-				<div class="row clearfix">
-					<div class="pull-left nav">
-						<ul class="nav-list">
-							<li>
-								<span class="hover">html+css <i class="glyphicon glyphicon-chevron-down"></i></span>
-								<div>
-									<a href="../html+css/css.html" class="current">css问题</a>
-								</div>
-							</li>
-							<li>
-								<span class="hover">jquery <i class="glyphicon glyphicon-chevron-down"></i></span>
-								<div>
-									<a href="../jquery/jquery.html">jquery轮播图示例</a>
-								</div>
-							</li>
-						</ul>
-					</div>
-					<div class="pull-right content">
-						<dl class="cont-dl">
-							<dt>
+<dl class="cont-dl">
+	<dt>
 								<p>连续点击一个按钮会出现蓝色遮罩的解决方法</p>
 								<!--<span>2017/9/6　星期三</span>-->
 							</dt>
-							<dd>
-								<pre>
+	<dd>
+		<pre>
 添加一段css：<br/>
 #btn{<br/>
 -webkit-user-select:none;<br/>
@@ -54,39 +15,18 @@ user-select:none;<br/>
 或者加一段JS：<br/>
 document.onselectstart=new Function("return false");<br/>
 								</pre>
-							</dd>
-						</dl>
-						<dl class="cont-dl">
-							<dt>
+	</dd>
+</dl>
+<dl class="cont-dl">
+	<dt>
 								<p>修改placeholder的颜色</p>
 							</dt>
-							<dd>
-								<pre>
+	<dd>
+		<pre>
 ::-webkit-input-placeholder { /* WebKit browsers */ color: #999; }<br/>
 ::-moz-placeholder { /* Mozilla Firefox 4 to 18 */ color: #999; } <br/>
 ::-moz-placeholder { /* Mozilla Firefox 19+ */ color: #999; } <br/>
 ::-ms-input-placeholder { /* Internet Explorer 10+ */ color: #999;}
 								</pre>
-							</dd>
-						</dl>
-					</div>
-					<!--content-->
-				</div>
-			</div>
-		</div>
-	</body>
-
-</html>
-<script>
-	$(function() {
-		$('.nav li span').click(function() {
-			if($(this).find('>i.glyphicon').is('.glyphicon-chevron-down')) {
-				$(this).find('>i.glyphicon').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-right');
-				$(this).siblings('div').slideUp();
-			} else {
-				$(this).find('>i.glyphicon').removeClass('glyphicon-chevron-right').addClass('glyphicon-chevron-down');
-				$(this).siblings('div').slideDown();
-			}
-		});
-	});
-</script>
+	</dd>
+</dl>
