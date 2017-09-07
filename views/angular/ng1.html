@@ -1,18 +1,18 @@
 <dl class="cont-dl">
-	<dt>关于angular路由中出现‘#！’的问题</dt>
+	<dt><p>关于angular路由中出现‘#！’的问题</p></dt>
 	<dd>
 		<p>在使用angular1.6以上版本的时，路由不能正常工作，会出现下面(如图所示)这种情况：</p>
-		<img src="../../images/angular/ng1.png" width="100%" />
+		<img src="images/angular/ng1.png" width="100%" />
 		<p>这是由于angular在升级到1.6的版本之后对路由做了处理，所以解决的办法如下：</p>
 		<p>1、因为Angular 1.6 版本更新后对路由做的处理，只需要加上$locationProvider.hashPrefix('');就可以和以前版本一样正常使用</p>
-		<pe>
+		<pre>
 			var app = angular.module('myApp', ['ngRoute']);<br/> app.config(['$routeProvider','$locationProvider', function($routeProvider,$locationProvider) {<br/> $locationProvider.hashPrefix('');
 			<br/> $routeProvider
 			<br/> .when('/', {<br/> templateUrl: 'views/index.html'<br/> })
 			<br/> .otherwise({
 			<br/> redirectTo: '/news'<br/> });
 			<br/> }]);
-		</pe>
+		</pre>
 		<p>2、使用1.6以下的版本</p>
 	</dd>
 </dl>

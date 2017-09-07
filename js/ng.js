@@ -5,16 +5,16 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 	$locationProvider.hashPrefix('');
 	$routeProvider
 		.when('/news', {
-			templateUrl: '../views/news.html'
+			templateUrl: '../blog/views/news.html'
 		})
 		.when('/css', {
-			templateUrl: '../views/html+css/css.html'
+			templateUrl: '../blog/views/html-css/css.html'
 		})
 		.when('/jquery', {
-			templateUrl: '../views/jquery/jquery.html'
+			templateUrl: '../blog/views/jquery/jquery.html'
 		})
 		.when('/ng01', {
-			templateUrl: '../views/angular/ng1.html'
+			templateUrl: '../blog/views/angular/ng1.html'
 		})
 		.otherwise({
 			redirectTo: '/news'
