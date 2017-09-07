@@ -21,6 +21,9 @@
 	</head>
 
 	<body ng-controller="myController" ng-init="Cut()" ng-cloak>
+		<div class="into-bg">
+			<a href="javascript:;">欢迎进入</a>
+		</div><!--into-bg-->
 		<div class="container-fluid bg">
 			<div class="container padding-top">
 				<div class="row clearfix" ui-view>
@@ -31,3 +34,10 @@
 	</body>
 
 </html>
+<script type="text/javascript">
+	$(function(){
+		$('.into-bg a').click(function(){
+			$(this).parent().remove();
+		});
+	});
+</script>
