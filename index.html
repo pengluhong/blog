@@ -1,29 +1,26 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
 
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<base href="/" />
+		<!--<base href="/" />-->
 		<title>luhom Peng</title>
 		<!--[if lt IE 9]>您使用的浏览器版本太低，请使用 IE9以上的版本浏览器打开本网站 <![endif]-->
 		<link rel="shortcut icon" href="favicon.ico">
 		<link rel="bookmark" href="favicon.ico" type="image/x-icon" 　/>
-		<link rel="stylesheet" href="A-Study/app/blog/style/reset.css">
-		<link rel="stylesheet" href="A-Study/app/blog/style/bootstrap.min.css">
-		<link rel="stylesheet" href="A-Study/app/blog/style/public.css">
-		<link rel="stylesheet" href="A-Study/app/blog/style/style.css">
-		<script src="A-Study/app/blog/js/jquery.min.js"></script>
-		<script src="A-Study/app/blog/js/bootstrap.min.js"></script>
-		<script src="A-Study/app/blog/js/angularJs1.6.3.js"></script>
-		<!--<script src="node_modules/angular-route/angular-route.min.js"></script>
-		<!--<script src="https://cdn.bootcss.com/angular.js/1.4.6/angular.min.js"></script>
-		<script src="https://apps.bdimg.com/libs/angular-route/1.3.13/angular-route.js"></script>-->
-		<script src="A-Study/app/blog/js/angular-ui-router.min.js"></script>
-		<script src="A-Study/app/blog/js/ng.js"></script>
+		<link rel="stylesheet" href="style/reset.css">
+		<link rel="stylesheet" href="style/bootstrap.min.css">
+		<link rel="stylesheet" href="style/public.css">
+		<link rel="stylesheet" href="style/style.css">
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/angularJs1.6.3.js"></script>
+		<script src="js/angular-ui-router.min.js"></script>
+		<script src="js/ng.js"></script>
 	</head>
 
-	<body ng-app="myApp" ng-controller="myController" ng-init="Cut()" ng-cloak>
+	<body ng-controller="myController" ng-init="Cut()" ng-cloak>
 		<div class="container-fluid bg">
 			<div class="container padding-top">
 				<div class="row clearfix" ui-view>
