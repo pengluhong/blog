@@ -6,12 +6,17 @@
 		<p>这是由于angular在升级到1.6的版本之后对路由做了处理，所以解决的办法如下：</p>
 		<p>1、因为Angular 1.6 版本更新后对路由做的处理，只需要加上$locationProvider.hashPrefix('');就可以和以前版本一样正常使用</p>
 		<pre>
-			var app = angular.module('myApp', ['ngRoute']);<br/> app.config(['$routeProvider','$locationProvider', function($routeProvider,$locationProvider) {<br/> $locationProvider.hashPrefix('');
-			<br/> $routeProvider
-			<br/> .when('/', {<br/> templateUrl: 'views/index.html'<br/> })
-			<br/> .otherwise({
-			<br/> redirectTo: '/news'<br/> });
-			<br/> }]);
+var app = angular.module('myApp', ['ngRoute']);<br/>
+app.config(['$routeProvider','$locationProvider', function($routeProvider,$locationProvider) {<br/> 
+	$locationProvider.hashPrefix('');<br/> 
+	$routeProvider<br/> 
+	.when('/', {<br/>
+		             templateUrl: 'views/index.html'<br/> 
+		       })<br/>
+    .otherwise({<br/>
+                     redirectTo: '/news'<br/> 
+              });<br/> 
+         }]);
 		</pre>
 		<p>2、使用1.6以下的版本</p>
 	</dd>

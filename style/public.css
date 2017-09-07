@@ -98,7 +98,7 @@ body {
 }
 
 .cont-dl dt p {
-	color: #737373;
+	color: #000;
 	line-height: 26px;
 	font-size: 16px;
 	margin: 0;
@@ -111,8 +111,10 @@ body {
 }
 
 .cont-dl dd {
-	color: #3c3c3c;
+	color: #737373;
 	font-size: 14px;
 	line-height: 22px;
 	font-weight: bold;
+	background: lightyellow;
+	padding: 20px;
 }
