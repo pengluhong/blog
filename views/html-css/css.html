@@ -30,3 +30,18 @@ document.onselectstart=new Function("return false");<br/>
 								</pre>
 	</dd>
 </dl>
+<dl class="cont-dl">
+	<dt>
+		<p>css3兼容性的渐变效果</p>
+	</dt>
+	<dd>
+		<pre>
+filter:alpha(opacity=100 finishopacity=50 style=1 startx=0,starty=0,finishx=0,finishy=150) progid:DXImageTransform.Microsoft.gradient(startcolorstr=red,endcolorstr=blue,gradientType=0);
+<br/>-ms-filter:alpha(opacity=100 finishopacity=50 style=1 startx=0,starty=0,finishx=0,finishy=150) progid:DXImageTransform.Microsoft.gradient(startcolorstr=red,endcolorstr=blue,gradientType=0);/*IE8*/	
+<br/>background:red; /* 一些不支持背景渐变的浏览器 */  
+<br/>background:-moz-linear-gradient(top, red, rgba(0, 0, 255, 0.5));  
+<br/>background:-webkit-gradient(linear, 0 0, 0 bottom, from(#ff0000), to(rgba(0, 0, 255, 0.5)));  
+<br/>background:-o-linear-gradient(top, red, rgba(0, 0, 255, 0.5)); 
+		</pre>
+	</dd>
+</dl>
