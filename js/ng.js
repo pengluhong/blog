@@ -54,7 +54,7 @@ app.controller('myController', ['$scope', '$state', '$http', function($scope, $s
 			$scope.obj = response.data;
 		});
 
-		//置顶
+		//页面返回顶部
 		(function() {
 			$(window).scroll(function() {
 				if($(document).scrollTop() > 0) {
