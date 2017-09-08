@@ -30,6 +30,11 @@ app.config(['$urlMatcherFactoryProvider', '$stateProvider', '$urlRouterProvider'
 			name: 'Main.ng1',
 			url: 'ng01',
 			templateUrl: "views/angular/ng1.html"
+		},
+		{
+			name: 'Main.js',
+			url: 'js',
+			templateUrl: "views/javascript/js.html"
 		}
 	];
 	angular.forEach(route, function(obj) {
@@ -38,8 +43,15 @@ app.config(['$urlMatcherFactoryProvider', '$stateProvider', '$urlRouterProvider'
 	//$locationProvider.html5Mode(true);
 }]);
 
-app.controller('myController', ['$scope', '$state', function($scope, $state) {
-	$scope.Cut = function() {
-		console.log($state.current);
+app.controller('myController', ['$scope', '$state', '$http', function($scope, $state, $http) {
+	//初始化
+	$scope.initFn = function() {
+		//获取导航栏数据
+		$http({
+			method: 'GET',
+			url: 'services/nav.json'
+		}).then(function(response) {
+			$scope.obj = response.data;
+		});
 	}
 }]);
