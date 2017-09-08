@@ -1,5 +1,5 @@
 body {
-	background: #000;
+	background: #ede9e8;
 	min-width: 1400px;
 }
 
@@ -48,7 +48,7 @@ body {
 }
 
 .padding-top>.row {
-	background: #fff;
+	background: #f7f3f2;
 	min-height: 800px;
 	padding-top: 30px;
 	padding-bottom: 30px;
