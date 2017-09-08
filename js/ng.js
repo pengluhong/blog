@@ -53,5 +53,21 @@ app.controller('myController', ['$scope', '$state', '$http', function($scope, $s
 		}).then(function(response) {
 			$scope.obj = response.data;
 		});
-	}
+
+		//置顶
+		(function() {
+			$(window).scroll(function() {
+				if($(document).scrollTop() > 0) {
+					$('.top-arrow').stop().fadeIn();
+				} else {
+					$('.top-arrow').stop().fadeOut();
+				}
+			});
+			$('.top-arrow').click(function() {
+				$('body,html').animate({
+					scrollTop: 0
+				});
+			});
+		})();
+	} //initFn() end;
 }]);

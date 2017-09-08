@@ -67,6 +67,21 @@ body {
 	display: none;
 }
 
+.top-arrow {
+	width: 50px;
+	height: 50px;
+	position: fixed;
+	z-index: 10000;
+	right: 50px;
+	bottom: 50px;
+	background: #887c79;
+	text-align: center;
+	line-height: 55px;
+	font-size: 24px;
+	color: #efefef;
+	cursor: pointer;
+	display: none;
+}
 
 /*nav*/
 
