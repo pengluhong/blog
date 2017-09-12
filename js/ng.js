@@ -45,7 +45,7 @@ app.config(['$urlMatcherFactoryProvider', '$stateProvider', '$urlRouterProvider'
 	angular.forEach(route, function(obj) {
 		$stateProvider.state(obj);
 	});
-	//$locationProvider.html5Mode(true);
+	/*$locationProvider.html5Mode(true);*/
 }]);
 
 app.controller('myController', ['$scope', '$state', '$http', function($scope, $state, $http) {
