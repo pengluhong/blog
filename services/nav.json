@@ -29,6 +29,9 @@
 			{
 				"title": "angular路由问题",
 				"url": "#/ng01"
+			}, {
+				"title": "为什么要用ui-router替代ngRoute",
+				"url": "#/ng02"
 			}
 		]
 	}

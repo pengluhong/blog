@@ -1,0 +1,15 @@
+<dl class="cont-dl">
+	<dt><p>为什么要用uiRouter替代ngRoute？</p></dt>
+	<dd>
+		<p>初学angular的时候，官网里面的路由用的就是ngRoute,一些资料中对路由的介绍也是ngRoute，，，，</p>
+		<p>但是在做项目的时候，公司里面给的框架就有写好的路由，但是用的并不是ngRoute，而是uiRouter,公司里面搭建这个框架的人是一个技术大牛，所以我认为他用这个是有一定的道理的，，，，</p>
+		<p>带着好奇我到网上查了一下uiRouter的一些资料发现原来ngRoute早就被uiRouter所取代，那么为什么ngRouter会被uiRoute替代？</p>
+		<p>
+			1、UI-Router支持嵌套视图，ngRoute不支持；
+			<br/> 使用ngRoute时，在主页面添加 &lt;ng-view&gt;&lt;/ng-view&gt;标签，会把视图渲染好自动加载到此标签，而如 果想在视图里面再加一个 &lt;ng-view&gt;&lt;/ng-view&gt;，用别的子视图渲染好来填充视图里面种的 &lt;ng- view&gt;标签，这是不支持的；而UI-Router支持这个特性，ui-router使用ui- view标签，可以层层嵌套视图。
+		</p>
+		<p>
+			2、UI-Router支持多视图，ngRoute不支持;<br/> ngRoute的页面只能添加一个 &lt;ng-view&gt;&lt;/ng-view&gt;标签，及时添加多个，都是填充同样的内容；
+		</p>
+	</dd>
+</dl>

@@ -32,6 +32,11 @@ app.config(['$urlMatcherFactoryProvider', '$stateProvider', '$urlRouterProvider'
 			templateUrl: "views/angular/ng1.html"
 		},
 		{
+			name: 'Main.ng2',
+			url: 'ng02',
+			templateUrl: "views/angular/ng2.html"
+		},
+		{
 			name: 'Main.js',
 			url: 'js',
 			templateUrl: "views/javascript/js.html"
