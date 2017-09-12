@@ -1,6 +1,9 @@
 body {
 	background: #ede9e8;
-	min-width: 1400px;
+}
+
+.container-fluid,.container {
+	min-width: 1200px !important;
 }
 
 .into-bg {
@@ -51,12 +54,14 @@ body {
 	min-height: 800px;
 	padding-top: 30px;
 	padding-bottom: 30px;
-	filter:alpha(opacity=100 finishopacity=50 style=1 startx=0,starty=0,finishx=0,finishy=150) progid:DXImageTransform.Microsoft.gradient(startcolorstr=#f7f3f2,endcolorstr=#ede9e8,gradientType=0);
-    -ms-filter:alpha(opacity=100 finishopacity=50 style=1 startx=0,starty=0,finishx=0,finishy=150) progid:DXImageTransform.Microsoft.gradient(startcolorstr=#f7f3f2,endcolorstr=#ede9e8,gradientType=0);/*IE8*/	
-    background:red; /* 一些不支持背景渐变的浏览器 */  
-    background:-moz-linear-gradient(top, #f7f3f2, rgba(237, 233, 232, 0.5));  
-    background:-webkit-gradient(linear, 0 0, 0 bottom, from(#f7f3f2), to(rgba(237, 233, 232, 0.5)));  
-    background:-o-linear-gradient(top, #f7f3f2, rgba(237, 233, 232, 0.5)); 
+	filter: alpha(opacity=100 finishopacity=50 style=1 startx=0, starty=0, finishx=0, finishy=150) progid: DXImageTransform.Microsoft.gradient(startcolorstr=#f7f3f2, endcolorstr=#ede9e8, gradientType=0);
+	-ms-filter: alpha(opacity=100 finishopacity=50 style=1 startx=0, starty=0, finishx=0, finishy=150) progid: DXImageTransform.Microsoft.gradient(startcolorstr=#f7f3f2, endcolorstr=#ede9e8, gradientType=0);
+	/*IE8*/
+	background: red;
+	/* 一些不支持背景渐变的浏览器 */
+	background: -moz-linear-gradient(top, #f7f3f2, rgba(237, 233, 232, 0.5));
+	background: -webkit-gradient(linear, 0 0, 0 bottom, from(#f7f3f2), to(rgba(237, 233, 232, 0.5)));
+	background: -o-linear-gradient(top, #f7f3f2, rgba(237, 233, 232, 0.5));
 }
 
 .hover:hover {
@@ -83,6 +88,7 @@ body {
 	display: none;
 }
 
+
 /*nav*/
 
 .nav {
@@ -104,7 +110,7 @@ body {
 }
 
 .head-img {
-	width: 100px;
+	width: 120px;
 	margin: 10px auto 0 auto;
 }
 
@@ -120,14 +126,14 @@ body {
 }
 
 .nav-list li {
-	width: 150px;
+	width: 200px;
 	color: #fff;
 }
 
 .nav-list li span,
 .nav-list li a {
 	display: block;
-	width: 150px;
+	width: 200px;
 	height: 33px;
 	line-height: 33px;
 	text-align: center;
@@ -161,7 +167,7 @@ body {
 /*content*/
 
 .content {
-	width: 900px;
+	width: 920px;
 	padding: 15px 30px;
 	border: 1px solid #000;
 	margin-right: 30px;
