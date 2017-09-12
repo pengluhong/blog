@@ -1,10 +1,4 @@
 <div class="pull-left nav">
-	<div class="head-info">
-		<p>个人资料</p>
-		<div class="head-img"><img src="images/head.jpg" width="100%" /></div>
-		<span>Luhom</span>
-	</div>
-	<!--head-info-->
 	<ul class="nav-list">
 		<li ng-repeat="infor in obj">
 			<span class="hover" ng-click="infor.show=!infor.show">{{infor.title}} <i class="glyphicon" ng-class="infor.show!=true?'glyphicon-chevron-down':'glyphicon-chevron-right'"></i></span>
@@ -13,5 +7,11 @@
 			</div>
 		</li>
 	</ul>
+	<div class="head-info">
+		<p>个人资料</p>
+		<div class="head-img"><img src="images/head.jpg" width="100%" /></div>
+		<span>Luhom</span>
+	</div>
+	<!--head-info-->
 </div>
 <div class="pull-right content" ui-view></div>

@@ -98,6 +98,7 @@ body {
 .head-info {
 	padding-bottom: 10px;
 	border: 1px solid #000;
+	margin-top: 20px;
 }
 
 .head-info p {
@@ -122,7 +123,6 @@ body {
 
 .nav-list {
 	background: #fefefe;
-	margin-top: 20px;
 }
 
 .nav-list li {
