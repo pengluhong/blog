@@ -2,11 +2,8 @@
 	<dt>技术链接</dt>
 	<dd>
 		<ul>
-			<li>
-				<a href="https://segmentfault.com/a/1190000003858219">angular好用的插件集合</a>
-			</li>
-			<li>
-				<a href="http://www.cnblogs.com/CraryPrimitiveMan/p/4385034.html">php链接MySQL数据库的三种方式</a>
+			<li ng-repeat="urls in links">
+				<a href="{{urls.link}}" target="_blank">{{urls.title}}</a>
 			</li>
 		</ul>
 	</dd>

@@ -14,13 +14,13 @@ app.config(['$urlMatcherFactoryProvider', '$stateProvider', '$urlRouterProvider'
 		{
 			name: 'Main.news',
 			url: '',
-			templateUrl: "views/news.html"
+			templateUrl: "views/news.html",
+			controller: 'newsController'
 		},
 		{
 			name: 'Main.css',
 			url: 'css',
-			templateUrl: "views/html-css/css.html",
-			controller: 'cssController'
+			templateUrl: "views/html-css/css.html"
 		},
 		{
 			name: 'Main.jquery',
