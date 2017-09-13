@@ -19,7 +19,8 @@ app.config(['$urlMatcherFactoryProvider', '$stateProvider', '$urlRouterProvider'
 		{
 			name: 'Main.css',
 			url: 'css',
-			templateUrl: "views/html-css/css.html"
+			templateUrl: "views/html-css/css.html",
+			controller: 'cssController'
 		},
 		{
 			name: 'Main.jquery',
@@ -27,14 +28,14 @@ app.config(['$urlMatcherFactoryProvider', '$stateProvider', '$urlRouterProvider'
 			templateUrl: "views/jquery/jquery.html"
 		},
 		{
-			name: 'Main.ng1',
+			name: 'Main.ng01',
 			url: 'ng01',
-			templateUrl: "views/angular/ng1.html"
+			templateUrl: "views/angular/ng01.html"
 		},
 		{
-			name: 'Main.ng2',
+			name: 'Main.ng02',
 			url: 'ng02',
-			templateUrl: "views/angular/ng2.html"
+			templateUrl: "views/angular/ng02.html"
 		},
 		{
 			name: 'Main.js',
@@ -79,15 +80,12 @@ app.controller('myController', ['$scope', '$state', '$http', function($scope, $s
 				});
 			});
 		})();
-
-		/*$scope.lianjie = function(name) {
-			setTimeout(function() {
-				if(name == $state.current.name) {
-					return "current";
-				} else {
-					return "";
-				}
-			}, 500);
-		}*/
 	} //initFn() end;
+	$scope.lianjie = function(names) {
+		if(names == $state.current.name) {
+			return "current";
+		} else {
+			return "";
+		}
+	};
 }]);
