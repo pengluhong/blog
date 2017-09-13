@@ -215,8 +215,12 @@ body {
 }
 
 .news-cont dd li {
-	padding: 15px 0;
+	padding: 6px 0;
 	font-size: 12px;
 	list-style-type: circle;
 	list-style-position: inside;
+}
+
+.news-cont dd li:first-child {
+	padding-top: 20px;
 }

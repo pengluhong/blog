@@ -4,7 +4,8 @@
 		"nav": [
 			{
 				"title": "css问题",
-				"url": "#/css"
+				"url": "#/css",
+				"main": "Main.css"
 			}
 		]
 	}, {
@@ -12,7 +13,8 @@
 		"nav": [
 			{
 				"title": "javascript问题",
-				"url": "#/js"
+				"url": "#/js",
+				"main": "Main.js"
 			}
 		]
 	}, {
@@ -20,7 +22,8 @@
 		"nav": [
 			{
 				"title": "jquery问题",
-				"url": "#/jquery"
+				"url": "#/jquery",
+				"main": "Main.jquery"
 			}
 		]
 	}, {
@@ -28,10 +31,45 @@
 		"nav": [
 			{
 				"title": "angular路由问题",
-				"url": "#/ng01"
+				"url": "#/ng01",
+				"main": "Main.ng01"
 			}, {
 				"title": "为什么要用ui-router替代ngRoute",
-				"url": "#/ng02"
+				"url": "#/ng02",
+				"main": "Main.ng02"
+			}
+		]
+	}, {
+		"title": "vue.js",
+		"nav": [
+			{
+				"title": "",
+				"url": ""
+			}
+		]
+	}, {
+		"title": "ReactJs",
+		"nav": [
+			{
+				"title": "",
+				"url": ""
+			}
+		]
+	}, {
+		"title": "Bootstrap",
+		"nav": [
+			{
+				"title": "",
+				"url": ""
+			}
+		]
+	}, {
+		"title": "PHP",
+		"nav": [
+			{
+				"title": "php链接MySQL数据库的方式",
+				"url": "#/php01",
+				"main": "Main.php01"
 			}
 		]
 	}

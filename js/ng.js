@@ -2,9 +2,9 @@
 var app = angular.module('myApp', ['ui.router']);
 app.config(['$urlMatcherFactoryProvider', '$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', function($urlMatcherFactoryProvider, $stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
 	$locationProvider.hashPrefix('');
-	$httpProvider.defaults.withCredentials = true;
+	//$httpProvider.defaults.withCredentials = true;
 	$urlRouterProvider.otherwise("/");
-	$urlMatcherFactoryProvider.caseInsensitive(true);
+	//$urlMatcherFactoryProvider.caseInsensitive(true);
 	var route = [{
 			name: 'Main',
 			url: '/',
@@ -40,12 +40,17 @@ app.config(['$urlMatcherFactoryProvider', '$stateProvider', '$urlRouterProvider'
 			name: 'Main.js',
 			url: 'js',
 			templateUrl: "views/javascript/js.html"
+		},
+		{
+			name: 'Main.php01',
+			url: 'php01',
+			templateUrl: "views/php/php01.html"
 		}
 	];
 	angular.forEach(route, function(obj) {
 		$stateProvider.state(obj);
 	});
-	/*$locationProvider.html5Mode(true);*/
+	//$locationProvider.html5Mode(true);
 }]);
 
 app.controller('myController', ['$scope', '$state', '$http', function($scope, $state, $http) {
@@ -74,5 +79,15 @@ app.controller('myController', ['$scope', '$state', '$http', function($scope, $s
 				});
 			});
 		})();
+
+		/*$scope.lianjie = function(name) {
+			setTimeout(function() {
+				if(name == $state.current.name) {
+					return "current";
+				} else {
+					return "";
+				}
+			}, 500);
+		}*/
 	} //initFn() end;
 }]);

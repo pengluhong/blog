@@ -3,7 +3,7 @@
 		<li ng-repeat="infor in obj">
 			<span class="hover" ng-click="infor.show=!infor.show">{{infor.title}} <i class="glyphicon" ng-class="infor.show!=true?'glyphicon-chevron-down':'glyphicon-chevron-right'"></i></span>
 			<div ng-show='!infor.show'>
-				<a ng-repeat="links in infor.nav" href="{{links.url}}">{{links.title}}</a>
+				<a ng-repeat="links in infor.nav" href="{{links.url}}" ng-class="lianjie(links.main)">{{links.title}}</a>
 			</div>
 		</li>
 	</ul>

@@ -1,0 +1,186 @@
+<dl class="cont-dl">
+	<dt><p>php链接mysql数据库的三种方式</p></dt>
+	<dd>
+		<p>举例：先创建一个数据库，代码如下：</p>
+		<pre><span style="color: #008080;">/*</span><span style="color: #008080;">创建数据库</span><span style="color: #008080;">*/</span>
+<span style="color: #0000ff;">CREATE</span> <span style="color: #0000ff;">DATABASE</span> <span style="color: #0000ff;">IF</span> <span style="color: #808080;">NOT</span> <span style="color: #808080;">EXISTS</span><span style="color: #000000;"> `test`;
+
+</span><span style="color: #008080;">/*</span><span style="color: #008080;">选择数据库</span><span style="color: #008080;">*/</span>
+<span style="color: #0000ff;">USE</span><span style="color: #000000;"> `test`;
+
+</span><span style="color: #008080;">/*</span><span style="color: #008080;">创建表</span><span style="color: #008080;">*/</span>
+<span style="color: #0000ff;">CREATE</span> <span style="color: #0000ff;">TABLE</span> <span style="color: #0000ff;">IF</span> <span style="color: #808080;">NOT</span> <span style="color: #808080;">EXISTS</span> `<span style="color: #ff00ff;">user</span><span style="color: #000000;">` (
+    name </span><span style="color: #0000ff;">varchar</span>(<span style="color: #800000; font-weight: bold;">50</span><span style="color: #000000;">),
+    age </span><span style="color: #0000ff;">int</span><span style="color: #000000;">
+);
+
+</span><span style="color: #008080;">/*</span><span style="color: #008080;">插入测试数据</span><span style="color: #008080;">*/</span>
+<span style="color: #0000ff;">INSERT</span> <span style="color: #0000ff;">INTO</span> `<span style="color: #ff00ff;">user</span>` (name, age) <span style="color: #0000ff;">VALUES</span>(<span style="color: #ff0000;">'</span><span style="color: #ff0000;">harry</span><span style="color: #ff0000;">'</span>, <span style="color: #800000; font-weight: bold;">20</span>), (<span style="color: #ff0000;">'</span><span style="color: #ff0000;">tony</span><span style="color: #ff0000;">'</span>, <span style="color: #800000; font-weight: bold;">23</span>), (<span style="color: #ff0000;">'</span><span style="color: #ff0000;">harry</span><span style="color: #ff0000;">'</span>, <span style="color: #800000; font-weight: bold;">24</span>);</pre>
+		<p>第一种是使用PHP原生的方式去连接数据库。代码如下：</p>
+		<pre>&lt;?<span style="color: #000000;">php
+</span><span style="color: #800080;">$host</span> = 'localhost'<span style="color: #000000;">;
+</span><span style="color: #800080;">$database</span> = 'test'<span style="color: #000000;">;
+</span><span style="color: #800080;">$username</span> = 'root'<span style="color: #000000;">;
+</span><span style="color: #800080;">$password</span> = 'root'<span style="color: #000000;">;
+</span><span style="color: #800080;">$selectName</span> = 'harry';<span style="color: #008000;">//</span><span style="color: #008000;">要查找的用户名，一般是用户输入的信息</span>
+<span style="color: #800080;">$insertName</span> = 'testname'<span style="color: #000000;">;
+
+</span><span style="color: #800080;">$connection</span> = <span style="color: #008080;">mysql_connect</span>(<span style="color: #800080;">$host</span>, <span style="color: #800080;">$username</span>, <span style="color: #800080;">$password</span>);<span style="color: #008000;">//</span><span style="color: #008000;">连接到数据库</span>
+<span style="color: #008080;">mysql_query</span>("set names 'utf8'");<span style="color: #008000;">//</span><span style="color: #008000;">编码转化</span>
+<span style="color: #0000ff;">if</span> (!<span style="color: #800080;">$connection</span><span style="color: #000000;">) {
+    </span><span style="color: #0000ff;">die</span>("could not connect to the database.\n" . <span style="color: #008080;">mysql_error</span>());<span style="color: #008000;">//</span><span style="color: #008000;">诊断连接错误</span>
+<span style="color: #000000;">}
+</span><span style="color: #800080;">$selectedDb</span> = <span style="color: #008080;">mysql_select_db</span>(<span style="color: #800080;">$database</span>);<span style="color: #008000;">//</span><span style="color: #008000;">选择数据库</span>
+<span style="color: #0000ff;">if</span> (!<span style="color: #800080;">$selectedDb</span><span style="color: #000000;">) {
+    </span><span style="color: #0000ff;">die</span>("could not to the database\n" . <span style="color: #008080;">mysql_error</span><span style="color: #000000;">());
+}
+</span><span style="color: #800080;">$selectName</span> = <span style="color: #008080;">mysql_real_escape_string</span>(<span style="color: #800080;">$selectName</span>);<span style="color: #008000;">//</span><span style="color: #008000;">防止SQL注入</span>
+<span style="color: #800080;">$query</span> = "select * from user where name = '<span style="color: #800080;">$selectName</span>'";<span style="color: #008000;">//</span><span style="color: #008000;">构建查询语句</span>
+<span style="color: #800080;">$result</span> = <span style="color: #008080;">mysql_query</span>(<span style="color: #800080;">$query</span>);<span style="color: #008000;">//</span><span style="color: #008000;">执行查询</span>
+<span style="color: #0000ff;">if</span> (!<span style="color: #800080;">$result</span><span style="color: #000000;">) {
+    </span><span style="color: #0000ff;">die</span>("could not to the database\n" . <span style="color: #008080;">mysql_error</span><span style="color: #000000;">());
+}
+</span><span style="color: #0000ff;">while</span> (<span style="color: #800080;">$row</span> = <span style="color: #008080;">mysql_fetch_row</span>(<span style="color: #800080;">$result</span><span style="color: #000000;">)) {
+    </span><span style="color: #008000;">//</span><span style="color: #008000;">取出结果并显示</span>
+    <span style="color: #800080;">$name</span> = <span style="color: #800080;">$row</span>[0<span style="color: #000000;">];
+    </span><span style="color: #800080;">$age</span> = <span style="color: #800080;">$row</span>[1<span style="color: #000000;">];
+    </span><span style="color: #0000ff;">echo</span> "Name: <span style="color: #800080;">$name</span> Age: <span style="color: #800080;">$age</span> \n"<span style="color: #000000;">;
+}
+
+</span><span style="color: #008000;">//</span><span style="color: #008000;">添加记录</span>
+<span style="color: #800080;">$insertName</span> = <span style="color: #008080;">mysql_real_escape_string</span>(<span style="color: #800080;">$insertName</span>);<span style="color: #008000;">//</span><span style="color: #008000;">防止SQL注入</span>
+<span style="color: #800080;">$insertSql</span> = "insert into user(name, age) values('<span style="color: #800080;">$insertName</span>', 18)"<span style="color: #000000;">;
+</span><span style="color: #800080;">$result</span> = <span style="color: #008080;">mysql_query</span>(<span style="color: #800080;">$insertSql</span><span style="color: #000000;">);
+</span><span style="color: #0000ff;">echo</span> <span style="color: #800080;">$result</span> . "\n"<span style="color: #000000;">;
+
+
+</span><span style="color: #008000;">//</span><span style="color: #008000;">更新记录</span>
+<span style="color: #800080;">$updateSql</span> = "update user set age = 19 where name='<span style="color: #800080;">$insertName</span>'"<span style="color: #000000;">;
+</span><span style="color: #800080;">$result</span> = <span style="color: #008080;">mysql_query</span>(<span style="color: #800080;">$updateSql</span><span style="color: #000000;">);
+</span><span style="color: #0000ff;">echo</span> <span style="color: #800080;">$result</span> . "\n"<span style="color: #000000;">;
+
+</span><span style="color: #008000;">//</span><span style="color: #008000;">删除记录</span>
+<span style="color: #800080;">$deleteSql</span> = "delete from user where age = 19"<span style="color: #000000;">;
+</span><span style="color: #800080;">$result</span> = <span style="color: #008080;">mysql_query</span>(<span style="color: #800080;">$deleteSql</span><span style="color: #000000;">);
+</span><span style="color: #0000ff;">echo</span> <span style="color: #800080;">$result</span> . "\n"<span style="color: #000000;">;
+
+</span><span style="color: #008080;">mysql_close</span>(<span style="color: #800080;">$connection</span>);<span style="color: #008000;">//</span><span style="color: #008000;">关闭连接</span></pre>
+
+		<p>第二种时使用mysqli扩展去链接数据库，代码如下：</p>
+		<pre>&lt;?<span style="color: #000000;">php
+</span><span style="color: #800080;">$host</span> = 'localhost'<span style="color: #000000;">;
+</span><span style="color: #800080;">$database</span> = 'test'<span style="color: #000000;">;
+</span><span style="color: #800080;">$username</span> = 'root'<span style="color: #000000;">;
+</span><span style="color: #800080;">$password</span> = 'root'<span style="color: #000000;">;
+</span><span style="color: #800080;">$selectName</span> = 'harry';<span style="color: #008000;">//</span><span style="color: #008000;">要查找的用户名，一般是用户输入的信息</span>
+<span style="color: #800080;">$insertName</span> = 'testname'<span style="color: #000000;">;
+
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 创建对象并打开连接，最后一个参数是选择的数据库名称</span>
+<span style="color: #800080;">$mysqli</span> = <span style="color: #0000ff;">new</span> mysqli(<span style="color: #800080;">$host</span>, <span style="color: #800080;">$username</span>, <span style="color: #800080;">$password</span>, <span style="color: #800080;">$database</span><span style="color: #000000;">);
+
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 编码转化为 utf8</span>
+<span style="color: #0000ff;">if</span> (!<span style="color: #800080;">$mysqli</span>-&gt;set_charset("utf8"<span style="color: #000000;">)) {
+    </span><span style="color: #008080;">printf</span>("Error loading character set utf8: %s\n", <span style="color: #800080;">$mysqli</span>-&gt;<span style="color: #000000;">error);
+} </span><span style="color: #0000ff;">else</span><span style="color: #000000;"> {
+    </span><span style="color: #008080;">printf</span>("Current character set: %s\n", <span style="color: #800080;">$mysqli</span>-&gt;<span style="color: #000000;">character_set_name());
+}
+
+</span><span style="color: #0000ff;">if</span> (<span style="color: #008080;">mysqli_connect_errno</span><span style="color: #000000;">()) {
+    </span><span style="color: #008000;">//</span><span style="color: #008000;"> 诊断连接错误</span>
+    <span style="color: #0000ff;">die</span>("could not connect to the database.\n" . <span style="color: #008080;">mysqli_connect_error</span><span style="color: #000000;">());
+}
+
+</span><span style="color: #800080;">$selectedDb</span> = <span style="color: #800080;">$mysqli</span>-&gt;select_db(<span style="color: #800080;">$database</span>);<span style="color: #008000;">//</span><span style="color: #008000;">选择数据库</span>
+<span style="color: #0000ff;">if</span> (!<span style="color: #800080;">$selectedDb</span><span style="color: #000000;">) {
+    </span><span style="color: #0000ff;">die</span>("could not to the database\n" . <span style="color: #008080;">mysql_error</span><span style="color: #000000;">());
+}
+
+</span><span style="color: #0000ff;">if</span> (<span style="color: #800080;">$stmt</span> = <span style="color: #800080;">$mysqli</span>-&gt;prepare("select * from user where name = ?"<span style="color: #000000;">)) {
+    </span><span style="color: #008000;">/*</span><span style="color: #008000;"> bind parameters for markers </span><span style="color: #008000;">*/</span>
+    <span style="color: #800080;">$stmt</span>-&gt;bind_param("s", <span style="color: #800080;">$selectName</span><span style="color: #000000;">);
+    </span><span style="color: #008000;">/*</span><span style="color: #008000;"> execute query </span><span style="color: #008000;">*/</span>
+    <span style="color: #800080;">$stmt</span>-&gt;<span style="color: #000000;">execute();
+    </span><span style="color: #008000;">/*</span><span style="color: #008000;"> bind result variables </span><span style="color: #008000;">*/</span>
+    <span style="color: #800080;">$stmt</span>-&gt;bind_result(<span style="color: #800080;">$name</span>, <span style="color: #800080;">$age</span><span style="color: #000000;">);
+
+    </span><span style="color: #008000;">/*</span><span style="color: #008000;"> fetch values </span><span style="color: #008000;">*/</span>
+    <span style="color: #0000ff;">while</span> (<span style="color: #800080;">$stmt</span>-&gt;<span style="color: #000000;">fetch()) {
+        </span><span style="color: #0000ff;">echo</span> "Name: <span style="color: #800080;">$name</span> Age: <span style="color: #800080;">$age</span> \n"<span style="color: #000000;">;
+    }
+    </span><span style="color: #008000;">/*</span><span style="color: #008000;"> close statement </span><span style="color: #008000;">*/</span>
+    <span style="color: #800080;">$stmt</span>-&gt;<span style="color: #000000;">close();
+}
+
+</span><span style="color: #008000;">//</span><span style="color: #008000;">添加记录</span>
+<span style="color: #0000ff;">if</span> (<span style="color: #800080;">$insertStmt</span> = <span style="color: #800080;">$mysqli</span>-&gt;prepare("insert into user(name, age) values(?, 18)"<span style="color: #000000;">)) {
+    </span><span style="color: #008000;">/*</span><span style="color: #008000;"> bind parameters for markers </span><span style="color: #008000;">*/</span>
+    <span style="color: #800080;">$insertStmt</span>-&gt;bind_param("s", <span style="color: #800080;">$insertName</span><span style="color: #000000;">);
+    </span><span style="color: #008000;">/*</span><span style="color: #008000;"> execute query </span><span style="color: #008000;">*/</span>
+    <span style="color: #800080;">$insertStmt</span>-&gt;<span style="color: #000000;">execute();
+    </span><span style="color: #0000ff;">echo</span> <span style="color: #800080;">$insertStmt</span>-&gt;affected_rows . "\n"<span style="color: #000000;">;
+    </span><span style="color: #008000;">/*</span><span style="color: #008000;"> close statement </span><span style="color: #008000;">*/</span>
+    <span style="color: #800080;">$insertStmt</span>-&gt;<span style="color: #000000;">close();
+}
+
+</span><span style="color: #008000;">//</span><span style="color: #008000;">更新记录</span>
+<span style="color: #0000ff;">if</span> (<span style="color: #800080;">$updateStmt</span> = <span style="color: #800080;">$mysqli</span>-&gt;prepare("update user set age = 19 where name=?"<span style="color: #000000;">)) {
+    </span><span style="color: #008000;">/*</span><span style="color: #008000;"> bind parameters for markers </span><span style="color: #008000;">*/</span>
+    <span style="color: #800080;">$updateStmt</span>-&gt;bind_param("s", <span style="color: #800080;">$insertName</span><span style="color: #000000;">);
+    </span><span style="color: #008000;">/*</span><span style="color: #008000;"> execute query </span><span style="color: #008000;">*/</span>
+    <span style="color: #800080;">$updateStmt</span>-&gt;<span style="color: #000000;">execute();
+    </span><span style="color: #0000ff;">echo</span> <span style="color: #800080;">$updateStmt</span>-&gt;affected_rows . "\n"<span style="color: #000000;">;
+    </span><span style="color: #008000;">/*</span><span style="color: #008000;"> close statement </span><span style="color: #008000;">*/</span>
+    <span style="color: #800080;">$updateStmt</span>-&gt;<span style="color: #000000;">close();
+}
+
+</span><span style="color: #008000;">//</span><span style="color: #008000;">删除记录</span>
+<span style="color: #800080;">$result</span> = <span style="color: #800080;">$mysqli</span>-&gt;query("delete from user where age = 19"<span style="color: #000000;">);
+</span><span style="color: #0000ff;">echo</span> <span style="color: #800080;">$result</span> . "\n"<span style="color: #000000;">;
+
+</span><span style="color: #800080;">$mysqli</span>-&gt;close();<span style="color: #008000;">//</span><span style="color: #008000;">关闭连接</span></pre>
+		<p>第三种是使用PDO的方式去连接数据库，代码如下：</p>
+		<pre>&lt;?<span style="color: #000000;">php
+</span><span style="color: #800080;">$host</span> = 'localhost'<span style="color: #000000;">;
+</span><span style="color: #800080;">$database</span> = 'test'<span style="color: #000000;">;
+</span><span style="color: #800080;">$username</span> = 'root'<span style="color: #000000;">;
+</span><span style="color: #800080;">$password</span> = 'root'<span style="color: #000000;">;
+</span><span style="color: #800080;">$selectName</span> = 'harry';<span style="color: #008000;">//</span><span style="color: #008000;">要查找的用户名，一般是用户输入的信息</span>
+<span style="color: #800080;">$insertName</span> = 'testname'<span style="color: #000000;">;
+
+</span><span style="color: #800080;">$pdo</span> = <span style="color: #0000ff;">new</span> PDO("mysql:host=<span style="color: #800080;">$host</span>;dbname=<span style="color: #800080;">$database</span>", <span style="color: #800080;">$username</span>, <span style="color: #800080;">$password</span>);<span style="color: #008000;">//</span><span style="color: #008000;">创建一个pdo对象</span>
+<span style="color: #800080;">$pdo</span>-&gt;<span style="color: #008080;">exec</span>("set names 'utf8'"<span style="color: #000000;">);
+</span><span style="color: #800080;">$sql</span> = "select * from user where name = ?"<span style="color: #000000;">;
+</span><span style="color: #800080;">$stmt</span> = <span style="color: #800080;">$pdo</span>-&gt;prepare(<span style="color: #800080;">$sql</span><span style="color: #000000;">);
+</span><span style="color: #800080;">$rs</span> = <span style="color: #800080;">$stmt</span>-&gt;execute(<span style="color: #0000ff;">array</span>(<span style="color: #800080;">$selectName</span><span style="color: #000000;">));
+
+</span><span style="color: #0000ff;">if</span> (<span style="color: #800080;">$rs</span><span style="color: #000000;">) {
+    </span><span style="color: #008000;">//</span><span style="color: #008000;"> PDO::FETCH_ASSOC 关联数组形式
+    // PDO::FETCH_NUM 数字索引数组形式</span>
+    <span style="color: #0000ff;">while</span> (<span style="color: #800080;">$row</span> = <span style="color: #800080;">$stmt</span>-&gt;fetch(PDO::<span style="color: #000000;">FETCH_ASSOC)) {
+        </span><span style="color: #800080;">$name</span> = <span style="color: #800080;">$row</span>['name'<span style="color: #000000;">];
+        </span><span style="color: #800080;">$age</span> = <span style="color: #800080;">$row</span>['age'<span style="color: #000000;">];
+        </span><span style="color: #0000ff;">echo</span> "Name: <span style="color: #800080;">$name</span> Age: <span style="color: #800080;">$age</span> \n"<span style="color: #000000;">;
+    }
+}
+
+</span><span style="color: #800080;">$oldAge</span> = 18<span style="color: #000000;">;
+</span><span style="color: #800080;">$insert</span> = <span style="color: #800080;">$pdo</span>-&gt;prepare('insert into user(name, age) values(:name, :age)'<span style="color: #000000;">);
+</span><span style="color: #800080;">$insert</span>-&gt;bindParam(':name', <span style="color: #800080;">$insertName</span>, PDO::<span style="color: #000000;">PARAM_STR);
+</span><span style="color: #800080;">$insert</span>-&gt;bindParam(':age', <span style="color: #800080;">$oldAge</span>, PDO::<span style="color: #000000;">PARAM_INT);
+</span><span style="color: #800080;">$result</span> = <span style="color: #800080;">$insert</span>-&gt;<span style="color: #000000;">execute();
+</span><span style="color: #0000ff;">echo</span> <span style="color: #800080;">$result</span> . "\n"<span style="color: #000000;">;
+
+</span><span style="color: #800080;">$newAge</span> = 19<span style="color: #000000;">;
+</span><span style="color: #800080;">$update</span> = <span style="color: #800080;">$pdo</span>-&gt;prepare('update user set age = ? where name = ?'<span style="color: #000000;">);
+</span><span style="color: #800080;">$update</span>-&gt;bindParam(1, <span style="color: #800080;">$newAge</span>, PDO::<span style="color: #000000;">PARAM_INT);
+</span><span style="color: #800080;">$update</span>-&gt;bindParam(2, <span style="color: #800080;">$insertName</span>, PDO::<span style="color: #000000;">PARAM_STR);
+</span><span style="color: #800080;">$result</span> = <span style="color: #800080;">$update</span>-&gt;<span style="color: #000000;">execute();
+</span><span style="color: #0000ff;">echo</span> <span style="color: #800080;">$result</span> . "\n"<span style="color: #000000;">;
+
+</span><span style="color: #800080;">$delete</span> = <span style="color: #800080;">$pdo</span>-&gt;prepare('delete from user where age = ?'<span style="color: #000000;">);
+</span><span style="color: #800080;">$result</span> = <span style="color: #800080;">$delete</span>-&gt;execute(<span style="color: #0000ff;">array</span>(<span style="color: #800080;">$newAge</span><span style="color: #000000;">));
+</span><span style="color: #0000ff;">echo</span> <span style="color: #800080;">$result</span> . "\n"<span style="color: #000000;">;
+
+</span><span style="color: #800080;">$pdo</span> = <span style="color: #0000ff;">null</span>;<span style="color: #008000;">//</span><span style="color: #008000;">关闭连接</span></pre>
+	</dd>
+</dl>
