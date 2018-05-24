@@ -28,6 +28,9 @@
 		"title": "2018一位大三学生腾讯一面问题总结"
 	}, {
 		"link": "https://www.cnblogs.com/wisewrong/p/6266038.html",
-		"title": "组件之间的数据传递"
+		"title": "Vue组件之间的数据传递"
+	}, {
+		"link": "https://www.cnblogs.com/dearxinli/p/3824700.html",
+		"title": "JS事件委托及其原理"
 	}
 ]
