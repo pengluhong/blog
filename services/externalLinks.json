@@ -35,5 +35,8 @@
 	}, {
 		"link": "https://segmentfault.com/a/1190000007020623",
 		"title": "如何在 vue 项目里正确地引用 jquery 和 jquery-ui的插件"
+	}, {
+		"link": "https://www.cnblogs.com/xiaohuochai/p/9228543.html",
+		"title": "移动端—使用vue全家桶制作博客网站"
 	}
 ]
